@@ -1,6 +1,3 @@
--- Показать действительную цену (ActualCost) и поля Name,
--- ProductNumber из таблиц Production.Product, Production.WorkOrderRouting.
-SELECT p."Name",
-       p."ProductNumber",
-       w."ActualCost"  FROM "Production"."Product" p join "Production"."WorkOrderRouting" w
-           ON p."ProductID" = w."ProductID";
+-- Показать   самый   дешёвый   товар   (Таблица  Production.Product).
+-- Вывести наименование и цену товара.
+SELECT "Name", "ListPrice" FROM "Production"."Product" WHERE "ListPrice"=(SELECT MIN("ListPrice") FROM "Production"."Product");

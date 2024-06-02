@@ -1,5 +1,6 @@
--- Показать список стран (поле Name), в котором указано, есть ли у
--- страны название региона или нет, из таблиц
--- Person.CountryRegion, Person.StateProvince, используя
--- LEFT OUTER JOIN.
-SELECT c."Name" FROM "Person"."CountryRegion" c LEFT OUTER JOIN "Person"."StateProvince" s ON c."CountryRegionCode" = s."CountryRegionCode" WHERE s."IsOnlyStateProvinceFlag" IS NOT NULL;
+-- Ранжирование   товаров   по   весу   в   порядке   его   возрастания   (Null
+-- считать   бесконечным   весом).   ("Production"."Product").
+-- Примечание   к   ранжированию   –   ранг   может   начинаться   с
+-- произвольного числа (например,  2 или 5),  главное – ранг не должен
+-- уменьшаться.
+select "ProductID","Weight", ROW_NUMBER() OVER (ORDER BY "Weight") as Rank from "Production"."Product";

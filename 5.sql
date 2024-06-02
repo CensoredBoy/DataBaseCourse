@@ -1,4 +1,5 @@
--- Показать список размеров (Size), которые имеют несколько моделей продуктов
--- (ProductModelID), из таблицы Production.Product, используя SELF JOIN.
-SELECT DISTINCT(ppi1."Size") FROM "Production"."Product" ppi1 JOIN "Production"."Product" ppi2
-    ON ppi1."ProductModelID"<>ppi2."ProductModelID" AND ppi1."Size"=ppi2."Size";
+-- 5 Показать товары, цена которых больше средней цены в том же стиле
+-- (Таблица  Production.Product). Показать поля  Name,  ListPrice
+-- и Style.
+
+SELECT "Name", "ListPrice", "Style"  FROM "Production"."Product" pp WHERE "ListPrice" > (SELECT  AVG("ListPrice") FROM "Production"."Product" ppp WHERE ppp."Style" = pp."Style");

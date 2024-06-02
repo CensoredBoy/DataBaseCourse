@@ -1,4 +1,5 @@
--- Показать список моделей продуктов (ProductModelID), которые
--- имеют несколько размеров (Size), из таблицы Production.Product, используя SELF JOIN.
-SELECT DISTINCT(ppi1."ProductModelID") FROM "Production"."Product" ppi1 JOIN  "Production"."Product" ppi2
-    ON ppi1."Size"<>ppi2."Size";
+-- 4 Вывести название должности сотрудника, а также название должности
+--сотрудника,   который   был   нанят   сразу   после   него
+--("HumanResources"."Employee").
+SELECT pp1."JobTitle", pp2."JobTitle" AS later_job_title FROM "HumanResources"."Employee"
+           pp1 LEFT JOIN "HumanResources"."Employee" pp2 ON pp1."HireDate" < pp2."HireDate";
